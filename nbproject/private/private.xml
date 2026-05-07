@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/Usuario/Downloads/Prueba/proyecto_gestion_hotelera/src/DAO/TipoHabitacionDAO.java</file>
             <file>file:/C:/Users/Usuario/Downloads/Prueba/proyecto_gestion_hotelera/src/modelo/TipoHabitacion.java</file>
+            <file>file:/C:/Users/Usuario/Downloads/Prueba/proyecto_gestion_hotelera/src/conexion/Conexion_db.java</file>
+            <file>file:/C:/Users/Usuario/Downloads/Prueba/proyecto_gestion_hotelera/src/vista/AppCliente.java</file>
+            <file>file:/C:/Users/Usuario/Downloads/Prueba/proyecto_gestion_hotelera/src/vista/AppTipoHabitacion.java</file>
         </group>
     </open-files>
 </project-private>
