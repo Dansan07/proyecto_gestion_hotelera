@@ -98,6 +98,14 @@ public class AppCliente extends javax.swing.JFrame {
             });
             frame.dispose();
         });
+        
+        item_tipo_habitacion.addActionListener(e ->{
+            EventQueue.invokeLater(()->{
+                AppTipoHabitacion vista = new AppTipoHabitacion();
+                vista.setVisible(true);
+            });
+            frame.dispose();
+        });
         item_salir.addActionListener(e -> {
             EventQueue.invokeLater(()->{
                 int opcion = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea Cerrar sesión?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
