@@ -27,7 +27,6 @@ public class AppCliente extends javax.swing.JFrame {
      */
     public AppCliente() {
         initComponents();
-        AppLogin login = new AppLogin();
         setJMenuBar(crearBarra(420, 585, this));
         mostrarClientes();
     }
@@ -94,6 +93,14 @@ public class AppCliente extends javax.swing.JFrame {
         item_cliente.addActionListener(e ->{
             EventQueue.invokeLater(()->{
                 AppCliente vista = new AppCliente();
+                vista.setVisible(true);
+            });
+            frame.dispose();
+        });
+        
+        item_tipo_habitacion.addActionListener(e ->{
+            EventQueue.invokeLater(()->{
+                AppTipoHabitacion vista = new AppTipoHabitacion();
                 vista.setVisible(true);
             });
             frame.dispose();
