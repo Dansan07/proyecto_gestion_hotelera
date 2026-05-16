@@ -27,7 +27,6 @@ public class AppCliente extends javax.swing.JFrame {
      */
     public AppCliente() {
         initComponents();
-        AppLogin login = new AppLogin();
         setJMenuBar(crearBarra(420, 585, this));
         mostrarClientes();
     }

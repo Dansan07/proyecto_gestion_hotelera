@@ -5,13 +5,8 @@
 package vista;
 
 import java.awt.EventQueue;
-import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 
 /**
  *
