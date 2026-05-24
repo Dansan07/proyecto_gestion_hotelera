@@ -4,9 +4,11 @@
  */
 package vista;
 
+import DAO.UsuariosDAO;
 import java.awt.EventQueue;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,10 +45,26 @@ public class AppLogin extends javax.swing.JFrame {
         }
     }
     
+    private void validarUser(){
+        String user = txtUsuario.getText();
+        String pass = txtContraseña.getText();
+        if (user.isBlank()||pass.isBlank()){
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios");
+            return;
+        }
+        boolean validado = UsuariosDAO.validar_usuario(user, pass);
+        if (validado){
+            AppCliente vista = new AppCliente();
+            vista.setVisible(true); 
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
+        }
+    }
+    
     private void irAClientes(){
         EventQueue.invokeLater(()->{
-            AppCliente vista = new AppCliente();
-            vista.setVisible(true);        
+            validarUser();
         });
     }
     
@@ -124,7 +142,6 @@ public class AppLogin extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
         irAClientes();
-        this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
