@@ -5,6 +5,7 @@
 package DAO;
 
 import conexion.Conexion_db;
+import javax.swing.JOptionPane;
 import modelo.TipoHabitacion;
 
 /**
@@ -25,9 +26,9 @@ public class TipoHabitacionDAO {
         pstmt.setInt(3, t.getCapacidad());
 
         pstmt.executeUpdate();
-
+        JOptionPane.showMessageDialog(null, "Habitación creada con éxito");
     } catch (Exception e) {
-        System.out.println(e);
+        JOptionPane.showMessageDialog(null, "Error al crear tipo de habitación: "+e);
     }
 }
 
