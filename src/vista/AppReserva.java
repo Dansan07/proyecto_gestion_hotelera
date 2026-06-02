@@ -23,6 +23,8 @@ public class AppReserva extends javax.swing.JFrame {
      */
     public AppReserva() { 
         initComponents();
+        AppCliente vista = new AppCliente();
+        setJMenuBar(vista.crearBarra(421, 500, this));
         inicializarTabla();
         cargarDatos();
 }

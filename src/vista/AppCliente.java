@@ -40,6 +40,8 @@ public class AppCliente extends javax.swing.JFrame {
         txtEmail.setText(tablaClientes.getValueAt(fila, 4).toString());
         txtDocumento.setText(tablaClientes.getValueAt(fila, 5).toString());
         lblFechaRegistro.setText(tablaClientes.getValueAt(fila, 6).toString());
+        
+        txtDocumento.setEditable(false);
     }    
     private boolean validarDatos(){
         boolean ok = true;
@@ -132,6 +134,7 @@ public class AppCliente extends javax.swing.JFrame {
         txtEmail.setText("");
         txtDocumento.setText("");
         lblFechaRegistro.setText("-");
+        txtDocumento.setEditable(true);
     }
     private Cliente obtenerDatosCliente(){
         Cliente cliente = new Cliente();

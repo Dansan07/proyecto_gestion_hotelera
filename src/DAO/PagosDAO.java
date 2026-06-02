@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pago;
@@ -31,10 +32,10 @@ public class PagosDAO {
             pstmt.setInt(3, pago.getReserva().getId_reserva());
 
             pstmt.executeUpdate();
-            System.out.println("Usuario insertado");
+            JOptionPane.showMessageDialog(null, "Pago Registrado");
             
         }catch(SQLException e){
-            System.out.println("Error INSERT: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error INSERT: " + e.getMessage());
         }
     }
     

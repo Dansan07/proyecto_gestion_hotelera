@@ -34,7 +34,7 @@ public class ClientesDAO {
             System.out.println("Usuario insertado");
             
         }catch(SQLException e){
-            System.out.println("Error INSERT: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error INSERT: " + e.getMessage());
         }
     }
     
