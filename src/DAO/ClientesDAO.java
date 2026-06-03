@@ -117,5 +117,56 @@ public class ClientesDAO {
                     + "No se puede Eliminar.");
         }
     }
+    public Cliente buscarPorDocumento(String documento) {
+
+    String sql = "SELECT * FROM cliente WHERE documento = ?";
+
+    try (
+        Connection conn = Conexion_db.conectar();
+        PreparedStatement pstmt = conn.prepareStatement(sql)
+    ) {
+
+        pstmt.setString(1, documento);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if(rs.next()) {
+
+            Cliente c = new Cliente();
+
+            c.setId_cliente(
+                rs.getInt("id_cliente")
+            );
+
+            c.setNombre(
+                rs.getString("nombre")
+            );
+
+            c.setApellido(
+                rs.getString("apellido")
+            );
+
+            c.setTelefono(
+                rs.getString("telefono")
+            );
+
+            c.setEmail(
+                rs.getString("email")
+            );
+
+            c.setDocumento(
+                rs.getString("documento")
+            );
+
+            return c;
+        }
+
+    } catch(Exception e) {
+
+        System.out.println(e.getMessage());
+    }
+
+    return null;
+}
     
 }

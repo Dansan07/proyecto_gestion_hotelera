@@ -4,10 +4,14 @@
  */
 package vista;
 
+import DAO.ClientesDAO;
+import DAO.HabitacionDAO;
 import DAO.ReservaDAO;
 import javax.swing.table.DefaultTableModel;
 import modelo.Reserva;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import java.util.Date;
 import modelo.Cliente;
 import modelo.Habitacion;
 /**
@@ -21,43 +25,51 @@ public class AppReserva extends javax.swing.JFrame {
     /**
      * Creates new form AppReservas
      */
-    public AppReserva() { 
-        initComponents();
+    public AppReserva() {
+    initComponents();
+    limpiarCampos();
+    
+    java.awt.EventQueue.invokeLater(() -> {
+        AppCliente appCliente = new AppCliente();
+        setJMenuBar(appCliente.crearBarra(480, 420, this));
         inicializarTabla();
         cargarDatos();
+    });
 }
     
     DefaultTableModel modelo = new DefaultTableModel();
     ReservaDAO dao = new ReservaDAO();
+    ClientesDAO clientesDAO = new ClientesDAO();
+    HabitacionDAO habitacionDAO = new HabitacionDAO();
     
     void mostrarDatosFormulario() {
 
     int fila = jTable1.getSelectedRow();
 
-    if (fila == -1) return;
+    if(fila == -1) return;
 
-    txtFReserva.setText(
-        jTable1.getValueAt(fila, 1).toString()
+    lblFReserva.setText(
+        jTable1.getValueAt(fila,1).toString()
     );
 
     txtFEntrada.setText(
-        jTable1.getValueAt(fila, 2).toString()
+        jTable1.getValueAt(fila,2).toString()
     );
 
     txtFSalida.setText(
-        jTable1.getValueAt(fila, 3).toString()
+        jTable1.getValueAt(fila,3).toString()
     );
 
-    txtEstado.setText(
-        jTable1.getValueAt(fila, 4).toString()
+    lblEstado.setText(
+        jTable1.getValueAt(fila,4).toString()
     );
 
     txtCliente.setText(
-        jTable1.getValueAt(fila, 5).toString()
+        jTable1.getValueAt(fila,5).toString()
     );
 
     txtHabitacion.setText(
-        jTable1.getValueAt(fila, 6).toString()
+        jTable1.getValueAt(fila,6).toString()
     );
 }
 
@@ -84,19 +96,21 @@ public class AppReserva extends javax.swing.JFrame {
             r.getFecha_entrada(),
             r.getFecha_salida(),
             r.getEstado(),
-            r.getCliente().getId_cliente(),
-            r.getHabitacion().getId_habitacion()
+            r.getCliente().getDocumento(),
+            r.getHabitacion().getNumero_habitacion()
         });
     }
 }
     void limpiarCampos() {
-
     txtCliente.setText("");
-    txtFReserva.setText("");
     txtFEntrada.setText("");
     txtFSalida.setText("");
     txtHabitacion.setText("");
-    txtEstado.setText("");
+
+    lblFReserva.setText("-");
+    lblEstado.setText("Pendiente");
+
+    jTable1.clearSelection();
 }
 
     /**
@@ -108,82 +122,83 @@ public class AppReserva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        txtEstado = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtFReserva = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         txtFEntrada = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         txtFSalida = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblFReserva = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txtHabitacion = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 394, -1));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Reserva"));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("Cliente");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 70, 20));
+        jLabel4.setText("DNI Cliente");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 20));
 
         txtCliente.addActionListener(this::txtClienteActionPerformed);
-        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 140, -1));
+        jPanel4.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 130, -1));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel8.setText("Fecha Entrada");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, 20));
+        jPanel4.add(txtFEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 130, -1));
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
+        jLabel9.setText("Fecha Salida");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, 20));
+        jPanel4.add(txtFSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 130, -1));
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        jLabel1.setText("Fecha Reserva");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        lblFReserva.setText("-");
+        jPanel4.add(lblFReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 130, -1));
+
+        jLabel3.setText("Numero Habitacion");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 120, 20));
+        jPanel4.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 120, -1));
+
+        jLabel5.setText("Estado");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 50, -1));
+
+        lblEstado.setText("-");
+        jPanel4.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 120, -1));
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
+        jPanel4.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(this::btnActualizarActionPerformed);
-        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+        jPanel4.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
+        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
-        jPanel2.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
+        jPanel4.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
-        txtEstado.addActionListener(this::txtEstadoActionPerformed);
-        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 140, -1));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 250));
 
-        jLabel1.setText("Fecha Reserva");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 100, -1));
-        jPanel2.add(txtFReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 140, -1));
-
-        jLabel3.setText("Fecha Entrada");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 100, -1));
-        jPanel2.add(txtFEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 140, -1));
-
-        jLabel5.setText("Fecha Salida");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 100, -1));
-        jPanel2.add(txtFSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 140, -1));
-
-        jLabel7.setText("Habitación");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, -1));
-        jPanel2.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 140, -1));
-
-        jLabel2.setText("Estado");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 60, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 300));
-        jPanel2.getAccessibleContext().setAccessibleName("Reserva de Habitacion");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla de Reservas"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,21 +218,9 @@ public class AppReserva extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 510, 210));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 700, 230));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 530, 250));
 
         getAccessibleContext().setAccessibleName("Reserva de Habitacion");
         getAccessibleContext().setAccessibleDescription("");
@@ -230,163 +233,194 @@ public class AppReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+            mostrarDatosFormulario();
+    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
 
-        java.util.Date fechaReserva =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFReserva.getText());
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("yyyy-MM-dd");
 
-        java.util.Date fechaEntrada =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFEntrada.getText());
+        Cliente c = clientesDAO.buscarPorDocumento(
+        txtCliente.getText()
+);
 
-        java.util.Date fechaSalida =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFSalida.getText());
+if(c == null){
 
-        Cliente c = new Cliente();
-        c.setId_cliente(Integer.parseInt(txtCliente.getText()));
+    JOptionPane.showMessageDialog(
+            null,
+            "Cliente no encontrado"
+    );
 
-        Habitacion h = new Habitacion();
-        h.setId_habitacion(Integer.parseInt(txtHabitacion.getText()));
+    return;
+}
+
+Habitacion h = habitacionDAO.buscarPorNumero(
+        txtHabitacion.getText()
+);
+
+if(h == null){
+
+    JOptionPane.showMessageDialog(
+            null,
+            "Habitación no encontrada"
+    );
+
+    return;
+}
 
         Reserva r = new Reserva(
-            0,
-            fechaReserva,
-            fechaEntrada,
-            fechaSalida,
-            txtEstado.getText(),
-            c,
-            h
+                0,
+                new Date(), // fecha reserva automática
+                sdf.parse(txtFEntrada.getText()),
+                sdf.parse(txtFSalida.getText()),
+                "Pendiente",
+                c,
+                h
         );
 
         dao.insertar(r);
 
         cargarDatos();
-
         limpiarCampos();
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Reserva registrada correctamente"
+        );
 
     } catch (Exception e) {
 
-        javax.swing.JOptionPane.showMessageDialog(
-            null,
-            "Error al guardar"
+        JOptionPane.showMessageDialog(
+                null,
+                e.getMessage()
         );
     }
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        try {
+
         int fila = jTable1.getSelectedRow();
 
-    if (fila == -1) {
+        if(fila == -1){
 
-        javax.swing.JOptionPane.showMessageDialog(
-            null,
-            "Selecciona una reserva"
-        );
+            JOptionPane.showMessageDialog(
+                null,
+                "Seleccione una reserva"
+            );
 
-        return;
-    }
+            return;
+        }
 
-    try {
+        // VALIDACIÓN EXTRA
+        if(lblFReserva.getText().equals("-")){
+
+            JOptionPane.showMessageDialog(
+                null,
+                "Seleccione una reserva válida"
+            );
+
+            return;
+        }
 
         int id = Integer.parseInt(
-            jTable1.getValueAt(fila, 0).toString()
+            jTable1.getValueAt(fila,0).toString()
         );
 
-        java.util.Date fechaReserva =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFReserva.getText());
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("yyyy-MM-dd");
 
-        java.util.Date fechaEntrada =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFEntrada.getText());
+        Cliente c = clientesDAO.buscarPorDocumento(
+        txtCliente.getText()
+);
 
-        java.util.Date fechaSalida =
-            new SimpleDateFormat("yyyy-MM-dd")
-            .parse(txtFSalida.getText());
+if(c == null){
 
-        Cliente c = new Cliente();
-        c.setId_cliente(
-            Integer.parseInt(txtCliente.getText())
-        );
+    JOptionPane.showMessageDialog(
+            null,
+            "Cliente no encontrado"
+    );
 
-        Habitacion h = new Habitacion();
-        h.setId_habitacion(
-            Integer.parseInt(txtHabitacion.getText())
-        );
+    return;
+}
 
-        Reserva r = new Reserva(
-            id,
-            fechaReserva,
-            fechaEntrada,
-            fechaSalida,
-            txtEstado.getText(),
-            c,
-            h
-        );
+Habitacion h = habitacionDAO.buscarPorNumero(
+        txtHabitacion.getText()
+);
+
+if(h == null){
+
+    JOptionPane.showMessageDialog(
+            null,
+            "Habitación no encontrada"
+    );
+
+    return;
+}
+Reserva r = new Reserva(
+        id,
+        sdf.parse(lblFReserva.getText()),
+        sdf.parse(txtFEntrada.getText()),
+        sdf.parse(txtFSalida.getText()),
+        lblEstado.getText(),
+        c,
+        h
+);
 
         dao.actualizar(r);
 
         cargarDatos();
-
         limpiarCampos();
 
-    } catch (Exception e) {
+        JOptionPane.showMessageDialog(
+                null,
+                "Reserva actualizada correctamente"
+        );
 
-        javax.swing.JOptionPane.showMessageDialog(
-            null,
-            "Error al actualizar"
+    } catch(Exception e){
+
+        JOptionPane.showMessageDialog(
+                null,
+                e.getMessage()
         );
     }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int fila = jTable1.getSelectedRow();
 
-    if (fila == -1) {
+    int fila = jTable1.getSelectedRow();
 
-        javax.swing.JOptionPane.showMessageDialog(
+    if(fila == -1){
+
+        JOptionPane.showMessageDialog(
             null,
-            "Selecciona una reserva"
+            "Seleccione una reserva"
         );
 
         return;
     }
 
-    try {
+    int id = Integer.parseInt(
+        jTable1.getValueAt(fila,0).toString()
+    );
 
-        int id = Integer.parseInt(
-            jTable1.getValueAt(fila, 0).toString()
-        );
+    dao.eliminar(id);
 
-        dao.eliminar(id);
+    cargarDatos();
+    limpiarCampos();
 
-        cargarDatos();
-
-        limpiarCampos();
-
-    } catch (Exception e) {
-
-        javax.swing.JOptionPane.showMessageDialog(
-            null,
-            "Error al eliminar"
-        );
-    }
+    JOptionPane.showMessageDialog(
+        null,
+        "Reserva eliminada correctamente"
+    );
     }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-            limpiarCampos();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        mostrarDatosFormulario();
-    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -415,24 +449,23 @@ public class AppReserva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFReserva;
     private javax.swing.JTextField txtCliente;
-    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFEntrada;
-    private javax.swing.JTextField txtFReserva;
     private javax.swing.JTextField txtFSalida;
     private javax.swing.JTextField txtHabitacion;
     // End of variables declaration//GEN-END:variables

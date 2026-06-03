@@ -17,7 +17,7 @@ import modelo.Pago;
  *
  * @author Usuario
  */
-public class PagosDAO {
+public class PagoDAO {
     
     public static void insertar(Pago pago) {
         String sql = "INSERT INTO pago(monto, metodo_pago, id_reserva)"

@@ -105,6 +105,13 @@ public class AppCliente extends javax.swing.JFrame {
             });
             frame.dispose();
         });
+        item_habitacion.addActionListener(e ->{
+            EventQueue.invokeLater(()->{
+                AppHabitacion vista = new AppHabitacion();
+                vista.setVisible(true);
+            });
+            frame.dispose();
+        });
         item_reserva.addActionListener(e ->{
             EventQueue.invokeLater(()->{
                 AppReserva vista = new AppReserva();

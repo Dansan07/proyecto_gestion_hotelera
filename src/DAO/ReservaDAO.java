@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import conexion.Conexion_db;
 import modelo.Cliente;
 import modelo.Habitacion;
@@ -15,7 +17,7 @@ import modelo.Reserva;
 public class ReservaDAO {
     public void insertar(Reserva r) {
 
-    String sql = "INSERT INTO reservas(fecha_reserva, fecha_entrada, fecha_salida, estado, id_cliente, id_habitacion) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO reserva(fecha_reserva, fecha_entrada, fecha_salida, estado, id_cliente, id_habitacion) VALUES (?, ?, ?, ?, ?, ?)";
 
     try (java.sql.Connection con = Conexion_db.conectar();
          java.sql.PreparedStatement ps = con.prepareStatement(sql)) {
@@ -40,7 +42,11 @@ public class ReservaDAO {
 
     java.util.List<Reserva> lista = new java.util.ArrayList<>();
 
-    String sql = "SELECT * FROM reserva";
+    String sql =
+    "SELECT r.*, c.documento, h.numero_habitacion " +
+    "FROM reserva r " +
+    "INNER JOIN cliente c ON r.id_cliente = c.id_cliente " +
+    "INNER JOIN habitacion h ON r.id_habitacion = h.id_habitacion";
 
     try (java.sql.Connection con = Conexion_db.conectar();
          java.sql.Statement st = con.createStatement();
@@ -48,24 +54,38 @@ public class ReservaDAO {
 
         while (rs.next()) {
 
-            Cliente c = new Cliente();
-            c.setId_cliente(rs.getInt("id_cliente"));
+    Cliente c = new Cliente();
 
-            Habitacion h = new Habitacion();
-            h.setId_habitacion(rs.getInt("id_habitacion"));
+    c.setId_cliente(
+        rs.getInt("id_cliente")
+    );
 
-            Reserva r = new Reserva(
-                rs.getInt("id_reserva"),
-                rs.getDate("fecha_reserva"),
-                rs.getDate("fecha_entrada"),
-                rs.getDate("fecha_salida"),
-                rs.getString("estado"),
-                c,
-                h
-            );
+    c.setDocumento(
+        rs.getString("documento")
+    );
 
-            lista.add(r);
-        }
+    Habitacion h = new Habitacion();
+
+    h.setId_habitacion(
+        rs.getInt("id_habitacion")
+    );
+
+    h.setNumero_habitacion(
+        rs.getString("numero_habitacion")
+    );
+
+    Reserva r = new Reserva(
+        rs.getInt("id_reserva"),
+        rs.getDate("fecha_reserva"),
+        rs.getDate("fecha_entrada"),
+        rs.getDate("fecha_salida"),
+        rs.getString("estado"),
+        c,
+        h
+    );
+
+    lista.add(r);
+}
 
     } catch (Exception e) {
         System.out.println(e);
@@ -75,7 +95,7 @@ public class ReservaDAO {
 }
     public void actualizar(Reserva r) {
 
-    String sql = "UPDATE reservas SET fecha_reserva=?, fecha_entrada=?, fecha_salida=?, estado=?, id_cliente=?, id_habitacion=? WHERE id_reserva=?";
+    String sql = "UPDATE reserva SET fecha_reserva=?, fecha_entrada=?, fecha_salida=?, estado=?, id_cliente=?, id_habitacion=? WHERE id_reserva=?";
 
     try (java.sql.Connection con = Conexion_db.conectar();
          java.sql.PreparedStatement ps = con.prepareStatement(sql)) {
@@ -100,19 +120,22 @@ public class ReservaDAO {
         System.out.println(e);
     }
 }
-    public void eliminar(int id) {
+    public void eliminar(int id){
 
-    String sql = "DELETE FROM reservas WHERE id_reserva=?";
+    String sql = "DELETE FROM reserva WHERE id_reserva = ?";
 
-    try (java.sql.Connection con = Conexion_db.conectar();
-         java.sql.PreparedStatement ps = con.prepareStatement(sql)) {
+    try (
+        java.sql.Connection con = Conexion_db.conectar();
+        java.sql.PreparedStatement ps = con.prepareStatement(sql)
+    ){
 
         ps.setInt(1, id);
 
         ps.executeUpdate();
 
-    } catch (Exception e) {
-        System.out.println(e);
+    }catch(Exception e){
+
+        System.out.println(e.getMessage());
     }
 }
 }
