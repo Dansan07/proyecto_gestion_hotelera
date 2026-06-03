@@ -4,7 +4,7 @@
  */
 package vista;
 
-import DAO.PagosDAO;
+import DAO.PagoDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -59,7 +59,7 @@ public class AppPago extends javax.swing.JFrame {
         Reserva reserva = new Reserva();
         reserva.setId_reserva(Integer.parseInt(tablaReservas.getValueAt(tablaReservas.getSelectedRow(),0).toString()));
         pago.setReserva(reserva);
-        PagosDAO.insertar(pago);
+        PagoDAO.insertar(pago);
     }
     
     private void consultarReservas(){
@@ -68,7 +68,7 @@ public class AppPago extends javax.swing.JFrame {
             return;
         }
         String documento = txtDocumento.getText().toString().trim();
-        PagosDAO.listar(tablaReservas, documento);
+        PagoDAO.listar(tablaReservas, documento);
     }
 
     /**
