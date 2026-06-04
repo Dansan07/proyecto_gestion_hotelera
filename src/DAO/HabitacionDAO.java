@@ -36,7 +36,11 @@ public class HabitacionDAO {
 
         java.util.List<Habitacion> lista = new java.util.ArrayList<>();
 
-        String sql = "SELECT * FROM habitacion";
+        String sql = """
+                     select id_habitacion, numero_habitacion, disponible, nombre_tipo
+                     from habitacion h
+                     join tipo_habitacion th on
+                     h.id_tipo = th.id_tipo""";
 
         try (java.sql.Connection con = Conexion_db.conectar();
              java.sql.Statement st = con.createStatement();
@@ -45,8 +49,8 @@ public class HabitacionDAO {
             while (rs.next()) {
 
                 TipoHabitacion t = new TipoHabitacion();
-                t.setId_tipo(
-                    rs.getInt("id_tipo")
+                t.setNombre_tipo(
+                    rs.getString("nombre_tipo")
                 );
 
                 Habitacion h = new Habitacion(

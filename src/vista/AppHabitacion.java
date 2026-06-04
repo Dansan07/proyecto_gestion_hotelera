@@ -57,7 +57,7 @@ public class AppHabitacion extends javax.swing.JFrame {
             h.getId_habitacion(),
             h.getNumero_habitacion(),
             h.isDisponible(),
-            h.getTipoHabitacion().getId_tipo()
+            h.getTipoHabitacion().getNombre_tipo()
 
         });
     }
