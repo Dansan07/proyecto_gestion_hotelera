@@ -119,7 +119,7 @@ public class ClientesDAO {
     }
     public Cliente buscarPorDocumento(String documento) {
 
-    String sql = "SELECT * FROM cliente WHERE documento = ?";
+    String sql = "SELECT * FROM cliente WHERE documento = ? ";
 
     try (
         Connection conn = Conexion_db.conectar();

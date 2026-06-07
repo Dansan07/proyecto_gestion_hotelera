@@ -5,6 +5,7 @@
 package vista;
 
 import DAO.HabitacionDAO;
+import DAO.TipoHabitacionDAO;
 import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
 import modelo.TipoHabitacion;
@@ -181,10 +182,16 @@ public class AppHabitacion extends javax.swing.JFrame {
         try {
 
         TipoHabitacion t = new TipoHabitacion();
-
-        t.setId_tipo(
-            Integer.parseInt(txtTipoHab.getText())
-        );
+        TipoHabitacionDAO th = new TipoHabitacionDAO();
+        
+        int id_tipo = th.buscarPorNombre(txtTipoHab.getText());
+        
+        if (id_tipo == 0){
+            JOptionPane.showMessageDialog(null, "Tipo de Habitación no disponible");
+            return;
+        }
+        
+        t.setId_tipo(id_tipo);
 
         Habitacion h = new Habitacion(0,txtNumeroHabitacion.getText(),chkDisponible.isSelected(),t);
 
@@ -196,7 +203,6 @@ public class AppHabitacion extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Habitación registrada correctamente");
 
     } catch(Exception e) {
-
             e.printStackTrace();
 
             JOptionPane.showMessageDialog(

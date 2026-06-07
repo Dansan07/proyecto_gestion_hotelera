@@ -6,6 +6,7 @@ package DAO;
 
 import conexion.Conexion_db;
 import javax.swing.JOptionPane;
+import modelo.Habitacion;
 import modelo.TipoHabitacion;
 
 /**
@@ -95,4 +96,29 @@ public class TipoHabitacionDAO {
         System.out.println(e);
     }
 }
+    public int buscarPorNombre(String nombre_tipo) {
+
+        String sql = "SELECT id_tipo FROM tipo_habitacion WHERE nombre_tipo = ?";
+
+        try (
+                java.sql.Connection con = Conexion_db.conectar(); java.sql.PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, nombre_tipo);
+
+            java.sql.ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+
+                int id_tipo = rs.getInt("id_tipo");
+
+                return id_tipo;
+            }
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return 0;
+    }
 }

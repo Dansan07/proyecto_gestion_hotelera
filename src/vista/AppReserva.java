@@ -248,8 +248,7 @@ public class AppReserva extends javax.swing.JFrame {
                 new SimpleDateFormat("yyyy-MM-dd");
 
         Cliente c = clientesDAO.buscarPorDocumento(
-        txtCliente.getText()
-);
+        txtCliente.getText());
 
 if(c == null){
 
