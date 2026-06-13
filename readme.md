@@ -1,5 +1,3 @@
-# gestion_hotelera
-
 # **Gestión Hotelera**
 
 ### **Proyecto del Taller de Panel Administrativo**
@@ -18,15 +16,15 @@
 
 ---
 
-# 🏨 Sistema de Gestión Hotelera
+# Sistema de Gestión Hotelera
 
-Sistema de escritorio robusto y modular desarrollado en **Java Swing** y **PostgreSQL** para la administración integral de establecimientos hoteleros. La aplicación permite centralizar el control de clientes, optimizar la asignación de habitaciones, gestionar los flujos de reservas y auditar los pagos correspondientes desde una interfaz gráfica intuitiva y persistencia de datos segura.
+Sistema de escritorio robusto y modular desarrollado en Java Swing y PostgreSQL para la administración integral de establecimientos hoteleros. La aplicación permite centralizar el control de clientes, optimizar la asignación de habitaciones, gestionar los flujos de reservas y auditar los pagos correspondientes desde una interfaz gráfica intuitiva y persistencia de datos segura.
 
 El objetivo principal de este proyecto es proveer una solución tecnológica escalable que minimice los errores operativos en la recepción, automatice los procesos administrativos cotidianos y facilite la toma de decisiones mediante consultas estructuradas en tiempo real.
 
 ---
 
-# 📌 Características Generales del Proyecto
+# Características General del Proyecto
 
 El sistema está diseñado bajo una arquitectura limpia y modular que cubre las necesidades operativas más críticas de un entorno hotelero:
 
@@ -38,7 +36,7 @@ El sistema está diseñado bajo una arquitectura limpia y modular que cubre las 
 
 ---
 
-# 🔐 Módulo de Inicio de Sesión
+# Módulo de Inicio de Sesión
 
 Este módulo actúa como la primera línea de seguridad del sistema, controlando el acceso mediante la autenticación formal de credenciales de usuario.
 
@@ -55,11 +53,11 @@ Este módulo actúa como la primera línea de seguridad del sistema, controlando
 
 ### Descripción
 
-Al iniciar la aplicación, se despliega la ventana de autenticación. Si el operador no posee credenciales vigentes, el sistema permite la redirección al formulario de **"Regístrate"** para crear un nuevo usuario y registrarlo en la persistencia del sistema.
+Al iniciar la aplicación, se despliega la ventana de autenticación. Si el operador no posee credenciales vigentes, el sistema permite la redirección al formulario de "Regístrate" para crear un nuevo usuario y registrarlo en la persistencia del sistema.
 
 ---
 
-# 👥 Módulo de Gestión de Clientes
+# Módulo de Gestión de Clientes
 
 Permite la administración y el seguimiento detallado de toda la información histórica y operativa relacionada con los huéspedes del hotel.
 
@@ -92,7 +90,7 @@ La información se consolida en un componente de tabla tabular, lo que permite a
 
 ---
 
-# 🛏️ Módulo de Gestión de Habitaciones
+# Módulo de Gestión de Habitaciones
 
 Este módulo provee los mecanismos necesarios para la administración física e inventario de las habitaciones disponibles dentro del establecimiento.
 
@@ -140,25 +138,25 @@ El sistema permite cruzar el inventario de habitaciones con sus categorías para
 
 ---
 
-# ⚙️ Barra de Menús y Control de Sesión
+# Barra de Menús y Control de Sesión
 
-La aplicación implementa una barra de herramientas superior estructurada (**Registrar**, **Gestionar**, **Configurar**) que funciona como el núcleo de la navegación modular del software.
+La aplicación implementa una barra de herramientas superior estructurada (Registrar, Gestionar, Configurar) que funciona como el núcleo de la navegación modular del software.
 
 ## Menú Configurar
 
-A través de este menú desplegable, el usuario puede acceder directamente a los formularios de parametrización del sistema (como los *Tipos de Habitación*) o gestionar el flujo de cierre del entorno de trabajo.
+A través de este menú desplegable, el usuario puede acceder directamente a los formularios de parametrización del sistema (como los Tipos de Habitación) o gestionar el flujo de cierre del entorno de trabajo.
 
 ![Menú Configurar](documentacion/menu_configurar.png)
 
 ## Confirmación de Salida
 
-Como mecanismo de seguridad contra la pérdida de datos o cierres accidentales, la opción **"Cerrar Sesión"** interrumpe el flujo principal y lanza un cuadro de diálogo modal de confirmación.
+Como mecanismo de seguridad contra la pérdida de datos o cierres accidentales, la opción "Cerrar Sesión" interrumpe el flujo principal y lanza un cuadro de diálogo modal de confirmación.
 
 ![Confirmar Salida](documentacion/confirmar_salida.png)
 
 ---
 
-# 📅 Módulo de Reservas
+# Módulo de Reservas
 
 Este módulo controla el ciclo de vida del hospedaje, vinculando directamente a los clientes con las habitaciones disponibles en rangos de fechas específicos.
 
@@ -190,11 +188,11 @@ Este módulo controla el ciclo de vida del hospedaje, vinculando directamente a 
 
 ### Descripción
 
-El módulo mitiga problemas críticos como la sobreventa de habitaciones (*overbooking*) mediante un riguroso control de fechas, permitiendo monitorizar el estado de cada habitación desde que se solicita el ingreso hasta que el huésped abandona el hotel.
+El módulo mitiga problemas críticos como la sobreventa de habitaciones (overbooking) mediante un riguroso control de fechas, permitiendo monitorizar el estado de cada habitación desde que se solicita el ingreso hasta que el huésped abandona el hotel.
 
 ---
 
-# 💳 Módulo de Pagos
+# Módulo de Pagos
 
 Garantiza el control financiero de las transacciones procesadas por concepto de hospedaje y servicios dentro de la aplicación.
 
@@ -227,7 +225,7 @@ Este componente unifica la gestión operativa con la financiera, enlazando cada 
 
 ---
 
-# 🖥️ Tecnologías Utilizadas
+# Tecnologías Utilizadas
 
 El sistema se construyó bajo estándares de desarrollo de software formal para aplicaciones de escritorio:
 
@@ -239,16 +237,16 @@ El sistema se construyó bajo estándares de desarrollo de software formal para 
 ## Interfaz Gráfica (Frontend)
 
 - **Java Swing**: Ventanas, contenedores, layouts y componentes avanzados de la biblioteca estándar de UI.
-- **Manejo de Eventos**: `ActionListeners` y listeners personalizados para una UI reactiva.
+- **Manejo de Eventos**: ActionListeners y listeners personalizados para una UI reactiva.
 
 ## Persistencia de Datos
 
 - **PostgreSQL**: Motor de base de datos relacional para garantizar la integridad y concurrencia de la información.
-- **JDBC (Java Database Connectivity)**: Controladores y consultas preparadas (`PreparedStatements`) para una comunicación segura y libre de inyecciones SQL.
+- **JDBC (Java Database Connectivity)**: Controladores y consultas preparadas (PreparedStatements) para una comunicación segura y libre de inyecciones SQL.
 
 ---
 
-# 📂 Estructura General del Sistema
+# Estructura General del Sistema
 
 El flujo lógico estándar de la aplicación comprende los siguientes pasos:
 
@@ -260,7 +258,7 @@ El flujo lógico estándar de la aplicación comprende los siguientes pasos:
 
 ---
 
-# 🚀 Posibles Mejoras Futuras
+# Posibles Mejoras Futuras
 
 Para la evolución tecnológica del sistema, se contemplan las siguientes características:
 
@@ -274,6 +272,6 @@ Para la evolución tecnológica del sistema, se contemplan las siguientes caract
 
 ---
 
-# 👨‍💻 Autoría
+# Autoría
 
 Proyecto académico de desarrollo de software diseñado como una solución integral para la gestión hotelera, aplicando conceptos avanzados de programación orientada a objetos, arquitectura de software por capas, bases de datos relacionales y diseño de interfaces gráficas de usuario en Java.
