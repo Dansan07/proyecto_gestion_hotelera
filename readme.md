@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # gestion_hotelera
 
+=======
+>>>>>>> 3ada061104b5f52ce490cb50e8099b74bac68ffd
 # **Gestión Hotelera**
 
 ### **Proyecto del Taller de Panel Administrativo**
@@ -26,7 +29,11 @@ El objetivo principal de este proyecto es proveer una solución tecnológica esc
 
 ---
 
+<<<<<<< HEAD
 # Características Generales del Proyecto
+=======
+# Características General del Proyecto
+>>>>>>> 3ada061104b5f52ce490cb50e8099b74bac68ffd
 
 El sistema está diseñado bajo una arquitectura limpia y modular que cubre las necesidades operativas más críticas de un entorno hotelero:
 
@@ -227,6 +234,7 @@ Este componente unifica la gestión operativa con la financiera, enlazando cada 
 
 ---
 
+<<<<<<< HEAD
 # Diseño y Arquitectura de la Base de Datos
 
 La persistencia del sistema se fundamenta en un modelo relacional estructurado que garantiza la integridad referencial, consistencia de datos y evita la redundancia mediante una correcta normalización.
@@ -247,6 +255,8 @@ El diseño de las tablas, sus restricciones de llaves primarias, foráneas y las
 
 ---
 
+=======
+>>>>>>> 3ada061104b5f52ce490cb50e8099b74bac68ffd
 # Tecnologías Utilizadas
 
 El sistema se construyó bajo estándares de desarrollo de software formal para aplicaciones de escritorio:
@@ -296,4 +306,8 @@ Para la evolución tecnológica del sistema, se contemplan las siguientes caract
 
 # Autoría
 
+<<<<<<< HEAD
 Proyecto académico de desarrollo de software diseñado como una solución integral para la gestión hotelera, aplicando conceptos avanzados de programación orientada a objetos, arquitectura de software por capas, bases de datos relacionales y diseño de interfaces gráficas de usuario en Java.
+=======
+Proyecto académico de desarrollo de software diseñado como una solución integral para la gestión hotelera, aplicando conceptos avanzados de programación orientada a objetos, arquitectura de software por capas, bases de datos relacionales y diseño de interfaces gráficas de usuario en Java.
+>>>>>>> 3ada061104b5f52ce490cb50e8099b74bac68ffd
