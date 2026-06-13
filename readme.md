@@ -1,104 +1,279 @@
 # gestion_hotelera
-Sistema de Gestión Hotelera desarrollado en Java Swing y PostgreSQL para el Taller de Panel Administrativo (Iii Semestre 2026). Incluye CRUD de Clientes y navegación modular.
+
 # **Gestión Hotelera**
-
-
-
-
 
 ### **Proyecto del Taller de Panel Administrativo**
 
-
 **Tecnología de Desarrollo de Sistemas Informáticos**
+
 ---
-
-
 
 #### **III Semestre 2026**
 
 **Profesor**: Mag. Carlos Adolfo Beltrán Castro
 
 **Estudiantes**: 
-
-* Deyby Daniel Ruiz Díaz - 1005332975.
-* Michael Steven Ruiz Díaz - 1016595938.
-
-
-![Pantalla de inicio de sesión](documentacion/vista_login.png)
-
-![Vista de formulario de Clientes](documentacion/vista_clientes.png)
-
-![Diagrama ER](documentacion/Diagrama_ER.png)
-
-&#x09;	
-
-
-
-**Descripción del Proyecto**
-Este sistema de **Gestión Hotelera** es una aplicación de escritorio robusta desarrollada en **Java SE - SWING**. El proyecto centraliza la administración de un hotel, permitiendo el flujo completo desde el acceso al panel, la navegación por módulos específicos y la gestión persistente de datos en una base de datos relacional.
-
-
-
-**Funcionalidades Implementadas:**
+* Deyby Daniel Ruiz Díaz - 1005332975
+* Michael Steven Ruiz Díaz - 1016595938
 
 ---
 
-* **Conexión a Base de Datos:** Integración completa con **PostgreSQL 18.3** mediante el driver JDBC.
-* **Gestión del Menú:** Sistema de navegación avanzado mediante **JMenuBar** y **JMenuItem**, organizado por procesos (Registrar, Gestionar, Configurar).
-* **CRUD de Clientes:** Funcionalidad operativa para la creación, consulta, actualización y eliminación de registros de huéspedes.
-* **Módulo de Cierre:** Función de salida en el menú Configurar que incluye un mensaje informativo de cierre de sesión mediante un cuadro de diálogo de confirmación.
+# 🏨 Sistema de Gestión Hotelera
 
+Sistema de escritorio robusto y modular desarrollado en **Java Swing** y **PostgreSQL** para la administración integral de establecimientos hoteleros. La aplicación permite centralizar el control de clientes, optimizar la asignación de habitaciones, gestionar los flujos de reservas y auditar los pagos correspondientes desde una interfaz gráfica intuitiva y persistencia de datos segura.
 
+El objetivo principal de este proyecto es proveer una solución tecnológica escalable que minimice los errores operativos en la recepción, automatice los procesos administrativos cotidianos y facilite la toma de decisiones mediante consultas estructuradas en tiempo real.
 
-#### **Estructura del Proyecto**
-
-
-**Navegación por Módulos:**
 ---
 
+# 📌 Características Generales del Proyecto
 
-La interfaz permite desplazarse entre las diferentes vistas del sistema:
+El sistema está diseñado bajo una arquitectura limpia y modular que cubre las necesidades operativas más críticas de un entorno hotelero:
 
-* **Menú Registrar:** Acceso a los formularios de **Cliente** y **Habitación**.
-* **Menú Gestionar:** Administración de **Pagos** y **Reservas**.
-* **Menú Configurar:** Gestión de **Tipos de Habitación** y opción de **Cerrar Sesión**.
+- **Arquitectura de Navegación Modular**: Menús organizados jerárquicamente para transiciones fluidas entre pantallas.
+- **Operaciones CRUD Completas**: Gestión automatizada de registros (Creación, Lectura, Actualización y Eliminación).
+- **Consistencia y Reglas de Negocio**: Validación rigurosa de formularios antes de la persistencia de datos.
+- **Control Operativo**: Seguimiento en tiempo real de la disponibilidad de las habitaciones por categorías y el estado financiero de cada reserva.
+- **Interfaz Intuitiva**: Diseño visual enfocado en la usabilidad y la eficiencia del usuario final.
 
+---
 
+# 🔐 Módulo de Inicio de Sesión
 
-###### **Componentes Técnicos (Modelo-Vista-Controlador):**
+Este módulo actúa como la primera línea de seguridad del sistema, controlando el acceso mediante la autenticación formal de credenciales de usuario.
 
-* **DAO:** Clases ClientesDAO y PagosDAO para la lógica de datos.
-* **modelo:** Entidades que representan el DER (Cliente, Habitación, Pago, Reserva, TipoHabitación).
-* **vista:** Interfaces gráficas (AppCliente, AppLogin, AppPago).
-* **conexion:** Gestión del enlace a PostgreSQL (Conexion\_db.java).
+## Funcionalidades
 
+- Inicio de sesión seguro mediante usuario y contraseña validados en la base de datos.
+- Restricción estricta de accesos a la interfaz administrativa central para usuarios no autorizados.
+- Opción modular para el registro e incorporación de nuevos usuarios al sistema.
+- Formulario limpio con controles visuales básicos de acceso.
 
+## Vista del módulo
 
-##### **Tecnologías Usadas**
+![Inicio de sesión](documentacion/login.png)
 
+### Descripción
 
+Al iniciar la aplicación, se despliega la ventana de autenticación. Si el operador no posee credenciales vigentes, el sistema permite la redirección al formulario de **"Regístrate"** para crear un nuevo usuario y registrarlo en la persistencia del sistema.
 
-* **Lenguaje:** Java (JDK 25).
-* **Base de Datos:** PostgreSQL 18.3.
-* **Librerías:** postgresql-42.7.11.jar, Absolute Layout.
-* **Herramientas de Gestión:** pgAdmin 4 (ERD Tool y Query Tool).
+---
 
+# 👥 Módulo de Gestión de Clientes
 
+Permite la administración y el seguimiento detallado de toda la información histórica y operativa relacionada con los huéspedes del hotel.
 
-##### **Instalación y Ejecución**
+## Funcionalidades
 
-* **Base de Datos:** Crear la BD hotel\_db en PostgreSQL y ejecutar el script SQL adjunto en la **carpeta db** (generado desde pgAdmin).
-* **Librerías:** Verificar que el JAR del driver de PostgreSQL esté en el classpath del proyecto.
-* **Ejecución:** Iniciar desde Gestion\_hotelera.java. Al aparecer el Login, **presionar "Ingresar"** para habilitar el Panel Administrativo.
-* **Uso:** Navegar a **Registrar > Cliente** para probar el CRUD funcionando con la base de datos.
+- **Registro**: Alta de nuevos huéspedes con validación de campos obligatorios.
+- **Consulta**: Listado dinámico y búsqueda de clientes existentes a través de la interfaz.
+- **Actualización**: Modificación en caliente de datos demográficos o de contacto del cliente.
+- **Eliminación**: Baja lógica o física de registros del sistema.
+- **Optimización**: Limpieza rápida de componentes de texto mediante un solo comando para agilizar la captura de nuevos datos.
 
+## Información almacenada
 
+Para cada huésped se auditan los siguientes campos en el motor relacional:
 
-##### **Entregables Adjuntos**
+- Nombre.
+- Apellido.
+- Número telefónico.
+- Correo electrónico.
+- Documento de identidad (Llave primaria/Alterna de búsqueda).
+- Fecha automatizada de registro.
 
+## Vista del módulo
 
+![Gestión de clientes](documentacion/clientes.png)
 
-* **Script SQL:** script\_hotel\_db.sql (Incluye tablas, llaves primarias, foráneas y restricciones de integridad).
-* **Diagrama ER:** Imagen del modelo relacional exportada desde pgAdmin.
-* **Código Fuente:** Proyecto completo con la estructura de paquetes organizada.
+### Descripción
 
+La información se consolida en un componente de tabla tabular, lo que permite al administrador buscar, seleccionar y modificar registros de forma ágil, garantizando que el directorio de huéspedes permanezca limpio, íntegro y actualizado.
+
+---
+
+# 🛏️ Módulo de Gestión de Habitaciones
+
+Este módulo provee los mecanismos necesarios para la administración física e inventario de las habitaciones disponibles dentro del establecimiento.
+
+## Funcionalidades
+
+- Registro y mapeo de unidades habitacionales.
+- Modificación de características operativas de las habitaciones.
+- Eliminación y depuración de registros obsoletos.
+- Consulta centralizada del listado maestro de inventario.
+
+## Información administrada
+
+- Número de habitación.
+- Tipo de habitación (Categoría vinculada).
+- Estado actual de disponibilidad (Libre, Ocupada, Mantenimiento).
+
+## Sub-módulo: Configuración de Tipos de Habitaciones
+
+Permite la parametrización de las diferentes categorías de hospedaje que ofrece el hotel, definiendo de manera centralizada las tarifas base por noche y la densidad de ocupación permitida.
+
+### Vista del sub-módulo
+
+![Configuración de Tipos de Habitación](documentacion/tipo_habitacion.png)
+
+### Tipos de habitaciones configuradas
+
+- Simple.
+- Doble.
+- Triple.
+- Suite Junior.
+- Suite.
+- Familiar.
+- Ejecutiva.
+- Premium.
+- Deluxe.
+- Presidencial.
+
+## Vista del módulo principal
+
+![Gestión de habitaciones](documentacion/habitaciones.png)
+
+### Descripción
+
+El sistema permite cruzar el inventario de habitaciones con sus categorías parametrizadas. Esto facilita al personal de recepción identificar instantáneamente qué habitaciones se acomodan a las necesidades del cliente y calcular costos de forma automatizada durante el proceso de reserva.
+
+---
+
+# ⚙️ Barra de Menús y Control de Sesión
+
+La aplicación implementa una barra de herramientas superior estructurada (**Registrar**, **Gestionar**, **Configurar**) que funciona como el núcleo de la navegación modular del software.
+
+## Menú Configurar
+
+A través de este menú desplegable, el usuario puede acceder directamente a los formularios de parametrización del sistema (como los *Tipos de Habitación*) o gestionar el flujo de cierre del entorno de trabajo.
+
+![Menú Configurar](documentacion/menu_configurar.png)
+
+## Confirmación de Salida
+
+Como mecanismo de seguridad contra la pérdida de datos o cierres accidentales, la opción **"Cerrar Sesión"** interrumpe el flujo principal y lanza un cuadro de diálogo modal de confirmación.
+
+![Confirmar Salida](documentacion/confirmar_salida.png)
+
+---
+
+# 📅 Módulo de Reservas
+
+Este módulo controla el ciclo de vida del hospedaje, vinculando directamente a los clientes con las habitaciones disponibles en rangos de fechas específicos.
+
+## Funcionalidades
+
+- Apertura y registro de nuevas reservas asignando habitaciones libres.
+- Reprogramación y actualización de fechas o estados de la reserva.
+- Cancelación y eliminación de registros de la agenda.
+- Consulta dinámica del histórico y estados de ocupación de las habitaciones.
+
+## Información registrada
+
+- Documento de identidad del cliente (Clave foránea).
+- Número de habitación asignada (Clave foránea).
+- Fecha de entrada (Check-In).
+- Fecha de salida (Check-Out).
+- Fecha de creación de la reserva.
+- Estado operativo de la reserva.
+
+## Estados de reserva admitidos
+
+- **Confirmada**: Reserva activa con habitación bloqueada.
+- **Pendiente**: En espera de verificación o pago inicial.
+- **Cancelada**: Liberación automática de la habitación asignada.
+
+## Vista del módulo
+
+![Gestión de reservas](documentacion/reservas.png)
+
+### Descripción
+
+El módulo mitiga problemas críticos como la sobreventa de habitaciones (*overbooking*) mediante un riguroso control de fechas, permitiendo monitorizar el estado de cada habitación desde que se solicita el ingreso hasta que el huésped abandona el hotel.
+
+---
+
+# 💳 Módulo de Pagos
+
+Garantiza el control financiero de las transacciones procesadas por concepto de hospedaje y servicios dentro de la aplicación.
+
+## Funcionalidades
+
+- Búsqueda selectiva de reservas activas e históricas de un cliente mediante su documento.
+- Registro detallado de transacciones financieras y abonos.
+- Limpieza automática de formularios de pago para nuevas operaciones.
+- Visualización histórica de saldos y cuentas relacionadas por huésped.
+
+## Información administrada
+
+- Documento de identidad del cliente.
+- Valor del pago (Monto total o parcial).
+- Método de pago seleccionado.
+
+## Métodos de pago disponibles
+
+- Efectivo.
+- Tarjeta de Crédito / Débito.
+- Transferencia bancaria.
+
+## Vista del módulo
+
+![Gestión de pagos](documentacion/pagos.png)
+
+### Descripción
+
+Este componente unifica la gestión operativa con la financiera, enlazando cada pago directamente a una reserva validada, lo que simplifica la auditoría interna de caja y asegura la transparencia en los cobros.
+
+---
+
+# 🖥️ Tecnologías Utilizadas
+
+El sistema se construyó bajo estándares de desarrollo de software formal para aplicaciones de escritorio:
+
+## Backend y Lógica de Negocio
+
+- **Java (JDK 17+)**: Uso intensivo de Programación Orientada a Objetos (POO), patrones de diseño y modularidad.
+- **Colecciones y DTOs**: Estructuras limpias para el intercambio de datos entre capas.
+
+## Interfaz Gráfica (Frontend)
+
+- **Java Swing**: Ventanas, contenedores, layouts y componentes avanzados de la biblioteca estándar de UI.
+- **Manejo de Eventos**: `ActionListeners` y listeners personalizados para una UI reactiva.
+
+## Persistencia de Datos
+
+- **PostgreSQL**: Motor de base de datos relacional para garantizar la integridad y concurrencia de la información.
+- **JDBC (Java Database Connectivity)**: Controladores y consultas preparadas (`PreparedStatements`) para una comunicación segura y libre de inyecciones SQL.
+
+---
+
+# 📂 Estructura General del Sistema
+
+El flujo lógico estándar de la aplicación comprende los siguientes pasos:
+
+1. **Autenticación**: El usuario administrador inicia sesión de forma segura.
+2. **Altas**: Registro de clientes y configuración base de tipos de habitación e inventario.
+3. **Operación**: Selección de clientes y habitaciones disponibles para generar transacciones de Reserva.
+4. **Cierre Financiero**: Registro de los métodos de pago y liquidación de las reservas correspondientes.
+5. **Mantenimiento**: Actualización o depuración constante de los datos mediante operaciones CRUD.
+
+---
+
+# 🚀 Posibles Mejoras Futuras
+
+Para la evolución tecnológica del sistema, se contemplan las siguientes características:
+
+- Generación automatizada de facturas y recibos en formato PDF.
+- Reportes estadísticos y gráficos de ocupación financiera mensual.
+- Dashboard administrativo con métricas clave (KPIs) en la pantalla principal.
+- Módulo de control de empleados, turnos y nómina básica.
+- Control de roles de usuario y permisos granulares (Recepcionista, Administrador, Auditor).
+- Exportación nativa de reportes a hojas de cálculo de Excel.
+- Notificaciones automáticas de confirmación vía correo electrónico a los huéspedes.
+
+---
+
+# 👨‍💻 Autoría
+
+Proyecto académico de desarrollo de software diseñado como una solución integral para la gestión hotelera, aplicando conceptos avanzados de programación orientada a objetos, arquitectura de software por capas, bases de datos relacionales y diseño de interfaces gráficas de usuario en Java.
