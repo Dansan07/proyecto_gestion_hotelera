@@ -295,3 +295,25 @@ Para la evolución tecnológica del sistema, se contemplan las siguientes caract
 # Autoría
 
 Proyecto académico de desarrollo de software diseñado como una solución integral para la gestión hotelera, aplicando conceptos avanzados de programación orientada a objetos, arquitectura de software por capas, bases de datos relacionales y diseño de interfaces gráficas de usuario en Java.
+
+---
+
+# Referencias Bibliográficas
+
+Las siguientes fuentes de documentación técnica e ingeniería de software han sustentado el diseño arquitectónico, el desarrollo de la interfaz gráfica y la persistencia de datos del presente sistema:
+
+### Entorno de Desarrollo e Interfaz Gráfica (UI)
+
+* Apache Software Foundation. (2026). *Apache NetBeans IDE Documentation and Tutorials*. Apache NetBeans Official Project. https://netbeans.apache.org/kb/index.html
+* Oracle Corporation. (2021). *Creating a GUI With JFC/Swing*. The Java Tutorials. https://docs.oracle.com/javase/tutorial/uiswing/
+* Schildt, H. (2019). *Java: The Complete Reference* (11th ed.). McGraw-Hill Education. *(Capítulos orientados al manejo de eventos y componentes Swing)*.
+
+### Persistencia y Conectividad de Bases de Datos
+
+* Oracle Corporation. (2020). *Java Database Connectivity (JDBC) API Overview*. Java SE Documentation. https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/
+* PostgreSQL Global Development Group. (2026). *PostgreSQL 16.0 Documentation: Client Interfaces*. PostgreSQL Official Website. https://www.postgresql.org/docs/
+* Silberschatz, A., Korth, H. F., & Sudarshan, S. (2019). *Database System Concepts* (7th ed.). McGraw-Hill. *(Enfoque práctico sobre el lenguaje SQL y conectores relacionales)*.
+
+### Buenas Prácticas y Arquitectura Modular
+
+* Martin, R. C. (2008). *Clean Code: A Handbook of Agile Software Craftsmanship*. Prentice Hall. *(Principios de separación de lógica y diseño modular)*.
